@@ -22,7 +22,10 @@ const MyOrders = () => {
 
   return (
     <div className='my-orders'>
-      <h2>My Orders</h2>
+      <div className="my-orders-header">
+        <h2>My Orders</h2>
+        <button onClick={fetchOrders}>Track Order</button>
+      </div>
       <div className="container">
         {data.map((order, index) => {
           return (
@@ -39,7 +42,6 @@ const MyOrders = () => {
               <p>${order.amount}.00</p>
               <p>Items: {order.items.length}</p>
               <p><span>&#x25cf;</span> <b>{order.status}</b></p>
-              <button onClick={fetchOrders}>Track Order</button>
             </div>
           )
         })}
