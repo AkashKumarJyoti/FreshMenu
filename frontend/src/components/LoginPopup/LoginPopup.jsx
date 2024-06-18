@@ -3,6 +3,7 @@ import './LoginPopup.css';
 import { assets } from '../../assets/assets';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import { toast } from 'react-toastify'
 
 const LoginPopup = ({ setShowLogin }) => {
   const containerRef = useRef(null);    // Used for closing the login window when user click outside window.
@@ -51,6 +52,7 @@ const LoginPopup = ({ setShowLogin }) => {
     if(response.data.success) {
       setToken(response.data.token);
       localStorage.setItem("token", response.data.token);
+      currState === "Login" ? toast("Logged In", {position: 'bottom-right'}) : toast("Registered", {position: 'bottom-right'});
       setShowLogin(false);
     }
     else {

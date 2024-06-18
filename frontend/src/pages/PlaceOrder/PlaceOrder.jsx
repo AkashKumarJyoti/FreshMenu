@@ -1,7 +1,9 @@
-import React, { useState,useContext,useNavigate, useEffect } from 'react';
+import React, { useState,useContext, useEffect } from 'react';
+import {useNavigate} from 'react-router-dom'
 import './PlaceOrder.css';
 import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
+import { toast } from 'react-toastify'
 
 const PlaceOrder = () => {
   const {getTotalAmount, token, food_list, cartItems, url} = useContext(StoreContext);
@@ -58,6 +60,7 @@ const PlaceOrder = () => {
       navigate('/cart');
     }
     else if(getTotalAmount() === 0) {
+      toast.info("Please Select Item First");
       navigate('/cart');
     }
   }, [token]);
