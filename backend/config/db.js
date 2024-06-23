@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import 'dotenv/config';
 
-const uri = 'mongodb+srv://AKJ:ak30032002@cluster0.htp5e4q.mongodb.net/FreshMenu';
+const uri = process.env.DB_STRING;
 export const connectDB = async () => {
   mongoose.connect(uri)
   .then(() => console.log('MongoDB connected...'))
